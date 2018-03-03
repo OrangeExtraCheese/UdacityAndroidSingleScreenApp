@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Primavera Pizzeria</string>
+    <string name="adress">Żwirki i Wigury 50\nWolbrom\n32-340</string>
+    <string name="name">Primavera</string>
+    <string name="time">10:00-22:00</string>
+    <string name="number">32 646 29 01</string>
+
+    <string name="pizzeria1">Front of pizzeria</string>
+    <string name="pizzeria2">interior of pizzeria</string>
+</resources>
