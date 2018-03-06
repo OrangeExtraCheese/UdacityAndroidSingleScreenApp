@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final ConstraintLayout rootView =  (ConstraintLayout) findViewById(R.id.rootView);
+        final ConstraintLayout rootView = findViewById(R.id.rootView);
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
@@ -43,18 +43,30 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        ImageView topFrame = (ImageView) findViewById(R.id.top_frame);
-        ImageView bottomFrame = (ImageView) findViewById(R.id.bottom_frame);
-        ImageView leftFrame = (ImageView) findViewById(R.id.left_frame);
-        ImageView rightFrame = (ImageView) findViewById(R.id.right_frame);
-        ImageView pizzeria1 = (ImageView) findViewById(R.id.imageView);
-        ImageView pizzeria2 = (ImageView) findViewById(R.id.imageView2);
+        ImageView topFrame =  findViewById(R.id.top_frame);
+        ImageView bottomFrame =  findViewById(R.id.bottom_frame);
+        ImageView leftFrame =  findViewById(R.id.left_frame);
+        ImageView rightFrame =  findViewById(R.id.right_frame);
+        ImageView pizzeriaPic1 =  findViewById(R.id.pizzeria_pic1);
+        ImageView pizzeriaPic2 =  findViewById(R.id.pizzeria_pic2);
 
-        Glide.with(this).load(R.drawable.vineslong).into(topFrame);
-        Glide.with(this).load(R.drawable.vineslong).into(bottomFrame);
-        Glide.with(this).load(R.drawable.vinesverylong_vertical).into(leftFrame);
-        Glide.with(this).load(R.drawable.vinesverylong_vertical).into(rightFrame);
-        Glide.with(this).load(R.drawable.primavera1).into(pizzeria1);
-        Glide.with(this).load(R.drawable.primavera2).into(pizzeria2);
+        if(getResources().getConfiguration().orientation==1)
+        {
+            Glide.with(this).load(R.drawable.vineslong).into(topFrame);
+            Glide.with(this).load(R.drawable.vineslong).into(bottomFrame);
+            Glide.with(this).load(R.drawable.vinesverylong_vertical).into(leftFrame);
+            Glide.with(this).load(R.drawable.vinesverylong_vertical).into(rightFrame);
+        }
+
+        if(getResources().getConfiguration().orientation==2)
+        {
+            Glide.with(this).load(R.drawable.vinesverylong).into(topFrame);
+            Glide.with(this).load(R.drawable.vinesverylong).into(bottomFrame);
+            Glide.with(this).load(R.drawable.vineslong_vertical).into(leftFrame);
+            Glide.with(this).load(R.drawable.vineslong_vertical).into(rightFrame);
+        }
+
+        Glide.with(this).load(R.drawable.primavera1).into(pizzeriaPic1);
+        Glide.with(this).load(R.drawable.primavera2).into(pizzeriaPic2);
     }
 }

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="image_hor_margin">5dp</dimen>
+    <dimen name="image_ver_bottom_margin">10dp</dimen>
+    <dimen name="phone_bottom_margin">8dp</dimen>
+    <dimen name="address_bottom_margin">15dp</dimen>
+    <dimen name="phone_top_margin">10dp</dimen>
+</resources>

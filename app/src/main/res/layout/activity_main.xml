@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/rootView"
-
     xmlns:app="http://schemas.android.com/apk/res-auto"
+
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="tomaszmarzec.udacity.android.singlescreenapp.MainActivity">
@@ -40,16 +40,40 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.1" />
 
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline_center_hor"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.45" />
+
     <ImageView
         android:id="@+id/top_frame"
         android:contentDescription="@null"
-        android:scaleType="fitCenter"
 
         android:layout_width="0dp"
         android:layout_height="0dp"
 
+        android:scaleType="centerInside"
+
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/guideline_top"
+        app:layout_constraintEnd_toEndOf="@id/guideline_right"
+        app:layout_constraintStart_toStartOf="@+id/guideline_left" />
+
+    <ImageView
+        android:id="@+id/bottom_frame"
+        android:contentDescription="@null"
+
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        android:scaleType="centerInside"
+
+        app:layout_constraintTop_toTopOf="@id/guideline_bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/guideline_right"
         app:layout_constraintStart_toStartOf="@+id/guideline_left" />
 
@@ -65,20 +89,6 @@
         app:layout_constraintEnd_toEndOf="@id/guideline_left"
         app:layout_constraintStart_toStartOf="parent" />
 
-
-    <ImageView
-        android:id="@+id/bottom_frame"
-        android:contentDescription="@null"
-
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-
-        app:layout_constraintTop_toTopOf="@id/guideline_bottom"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/guideline_right"
-        app:layout_constraintStart_toStartOf="@+id/guideline_left" />
-
-
     <ImageView
         android:id="@+id/right_frame"
         android:contentDescription="@null"
@@ -91,34 +101,37 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/guideline_right" />
 
-
-
     <!--    LinearLayout and RelativeLayout are quite redundant here,
         but were included to accomplish project specification-->
 
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/linear_text"
+        android:orientation="vertical"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+
+        app:layout_constraintTop_toTopOf="@+id/guideline_top"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline_top">
+        app:layout_constraintStart_toStartOf="parent">
 
         <TextView
-            android:id="@+id/textView2"
-
-            android:text="@string/name"
-            android:fontFamily="@font/hazelgrace"
-            android:textSize="80sp"
+            android:id="@+id/pizzeria_name"
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            />
+
+            android:fontFamily="@font/hazelgrace"
+            android:text="@string/name"
+            android:textSize="80sp"
+
+            android:layout_gravity="center_horizontal"/>
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/address"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
             android:text="@string/adress"
             android:fontFamily="@font/josefinsans"
@@ -127,75 +140,76 @@
             android:textSize="25sp"
             android:textStyle="bold"
 
-            android:layout_width="wrap_content"
+            android:layout_below="@id/pizzeria_name"
+            android:layout_gravity="center_horizontal" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/linear_images"
+        android:orientation="horizontal"
+
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        android:layout_marginBottom="@dimen/image_ver_bottom_margin"
+
+        app:layout_constraintBottom_toTopOf="@+id/hours"
+        app:layout_constraintTop_toBottomOf="@id/guideline_center_hor"
+        app:layout_constraintEnd_toEndOf="@id/guideline_right"
+        app:layout_constraintStart_toStartOf="@id/guideline_left">
+
+        <ImageView
+            android:id="@+id/pizzeria_pic1"
+            android:contentDescription="@string/pizzeria1"
+
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            />
+            android:layout_weight="0.5"
+
+            android:layout_marginEnd="@dimen/image_hor_margin" />
+
+        <ImageView
+            android:id="@+id/pizzeria_pic2"
+            android:contentDescription="@string/pizzeria2"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+
+            android:layout_marginStart="@dimen/image_hor_margin"/>
     </LinearLayout>
 
-    <RelativeLayout
+    <TextView
+        android:id="@+id/hours"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        app:layout_constraintBottom_toTopOf="@+id/textView3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="10dp"
-        >
-        <ImageView
-            android:id="@+id/imageView"
-            android:contentDescription="@string/pizzeria1"
-
-            android:layout_width="140dp"
-            android:layout_height="140dp"
-
-            android:layout_marginEnd="5dp"
-            />
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:contentDescription="@string/pizzeria2"
-
-            android:layout_width="140dp"
-            android:layout_height="140dp"
-
-            android:layout_toEndOf="@id/imageView"
-            android:layout_marginStart="5dp"
-            />
-    </RelativeLayout>
-
-    <TextView
-        android:id="@+id/textView3"
-
+        android:fontFamily="@font/josefinsans"
         android:text="@string/time"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:fontFamily="@font/josefinsans"
+
+        app:layout_constraintBottom_toTopOf="@+id/phone_number"
+        app:layout_constraintEnd_toEndOf="@+id/phone_number"
+        app:layout_constraintStart_toStartOf="@+id/phone_number" />
+
+    <TextView
+        android:id="@+id/phone_number"
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_marginTop="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView4"
-        app:layout_constraintEnd_toEndOf="@+id/textView4"
-        app:layout_constraintStart_toStartOf="@+id/textView4" />
-
-    <TextView
-        android:id="@+id/textView4"
-
-        android:text="@string/number"
         android:fontFamily="@font/josefinsans"
+        android:text="@string/number"
         android:textSize="24sp"
         android:textStyle="bold"
 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
         app:layout_constraintBottom_toTopOf="@id/bottom_frame"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+
+        android:layout_marginBottom="@dimen/phone_bottom_margin" />
+
 
 </android.support.constraint.ConstraintLayout>
