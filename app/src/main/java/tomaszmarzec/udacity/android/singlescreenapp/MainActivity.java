@@ -1,13 +1,16 @@
 package tomaszmarzec.udacity.android.singlescreenapp;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Build;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -15,6 +18,8 @@ import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 
 public class MainActivity extends AppCompatActivity {
+
+    String phoneNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
         ImageView pizzeriaPic1 =  findViewById(R.id.pizzeria_pic1);
         ImageView pizzeriaPic2 =  findViewById(R.id.pizzeria_pic2);
 
+         phoneNumber = getResources().getString(R.string.number);
+
         if(getResources().getConfiguration().orientation==1)
         {
             Glide.with(this).load(R.drawable.vineslong).into(topFrame);
@@ -68,5 +75,11 @@ public class MainActivity extends AppCompatActivity {
 
         Glide.with(this).load(R.drawable.primavera1).into(pizzeriaPic1);
         Glide.with(this).load(R.drawable.primavera2).into(pizzeriaPic2);
+    }
+
+    public void callPizzeria(View view)
+    {
+        Intent phoneIntent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+phoneNumber));
+        startActivity(phoneIntent);
     }
 }
