@@ -21,18 +21,39 @@ public class MainActivity extends AppCompatActivity {
 
     String phoneNumber;
 
+    ImageView topFrame;
+    ImageView bottomFrame;
+    ImageView leftFrame;
+    ImageView rightFrame;
+    ImageView pizzeriaPic1;
+    ImageView pizzeriaPic2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        phoneNumber = getResources().getString(R.string.number);
+
         final ConstraintLayout rootView = findViewById(R.id.rootView);
+
+        topFrame =  findViewById(R.id.top_frame);
+        bottomFrame =  findViewById(R.id.bottom_frame);
+        leftFrame =  findViewById(R.id.left_frame);
+        rightFrame =  findViewById(R.id.right_frame);
+        pizzeriaPic1 =  findViewById(R.id.pizzeria_pic1);
+        pizzeriaPic2 =  findViewById(R.id.pizzeria_pic2);
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         int height = displayMetrics.heightPixels;
         int width = displayMetrics.widthPixels;
 
+        renderImages(rootView, height, width);
+    }
+
+    private void renderImages(final ConstraintLayout rootView, int height, int width)
+    {
         //Code based on StackOverflow topic: https://stackoverflow.com/questions/33971626/set-background-image-to-relative-layout-using-glide-in-android/38025862
         // Answer by Chintan Desai
         Glide.with(this).load(R.drawable.pizzabackground2).asBitmap().into(new SimpleTarget<Bitmap>(width, height)
@@ -47,15 +68,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
-        ImageView topFrame =  findViewById(R.id.top_frame);
-        ImageView bottomFrame =  findViewById(R.id.bottom_frame);
-        ImageView leftFrame =  findViewById(R.id.left_frame);
-        ImageView rightFrame =  findViewById(R.id.right_frame);
-        ImageView pizzeriaPic1 =  findViewById(R.id.pizzeria_pic1);
-        ImageView pizzeriaPic2 =  findViewById(R.id.pizzeria_pic2);
-
-         phoneNumber = getResources().getString(R.string.number);
 
         if(getResources().getConfiguration().orientation==1)
         {
