@@ -20,6 +20,9 @@ import com.bumptech.glide.request.target.SimpleTarget;
 public class MainActivity extends AppCompatActivity {
 
     String phoneNumber;
+    Intent phoneIntent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+phoneNumber));
+    String mapQuery= "wolbrom+pizzeria+primavera";
+    Intent mapIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/maps/search/?api=1&query="+mapQuery));
 
     ImageView topFrame;
     ImageView bottomFrame;
@@ -91,7 +94,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void callPizzeria(View view)
     {
-        Intent phoneIntent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+phoneNumber));
         startActivity(phoneIntent);
+    }
+
+    public void showMap(View view)
+    {
+        startActivity(mapIntent);
     }
 }
